@@ -1,0 +1,37 @@
+#!/bin/bash
+
+USAGE="Usage: build_rom <rom> <device> [j]"
+
+if [ "$#" -eq 0 ]
+then
+  echo "No arguments specified. ${USAGE}"
+  exit 1
+
+elif [ -z $1 ]
+then
+  echo "No ROM specified. ${USAGE}"
+  exit 1
+
+elif [ -z $2 ]
+then
+  echo "No device specified. ${USAGE}"
+  exit 1
+
+else
+  echo "Sourcing envsetup.sh and setting up build vars..."
+
+  . build/envsetup.sh
+  lunch ${1}_${2}-userdebug
+
+  [ -z $3 ] && J=16 || J=${3}
+
+    echo "Building ${1} for ${2} with -j${J}... (press CTRL + C within 5 seconds to cancel)" && \
+                                                                    sleep 1 && echo "5....." && \
+                                                                    sleep 1 && echo "4...."  && \
+                                                                    sleep 1 && echo "3..."   && \
+                                                                    sleep 1 && echo "2.."    && \
+                                                                    sleep 1 && echo "1."     && \
+
+    make clean -j${J}
+    time mka bacon -j${J}
+fi
