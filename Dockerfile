@@ -7,7 +7,7 @@ USER root
 # Install dependencies
 RUN apt-get -y update && apt-get upgrade -y
 
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get install -y \
     build-essential \
     file \
     apt-utils \
@@ -59,9 +59,18 @@ RUN apt-get install -y --no-install-recommends \
     libssl-dev \
     libxml2-dev \
     libxslt1-dev \
-    zlib1g-dev \
-    kmod
-
+    kmod \
+    imagemagick \
+    lib32readline-dev \
+    liblz4-tool \
+    libncurses5-dev \
+    libsdl1.2-dev \
+    libwxgtk3.0-gtk3-dev \
+    libxml2 \
+    pngcrush \
+    schedtool \
+    squashfs-tools
+    
 RUN ccache -M 100G
 
 RUN apt-get purge -y --auto-remove && apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
