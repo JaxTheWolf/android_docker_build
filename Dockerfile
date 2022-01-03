@@ -21,10 +21,7 @@ RUN apt-get install -y --no-install-recommends \
     gcc-multilib \
     g++-multilib \
     libc6-dev-i386 \
-    x11proto-core-dev \
-    libx11-dev \
     lib32z-dev \
-    libgl1-mesa-dev \
     libxml2-utils \
     xsltproc \
     unzip \
@@ -38,7 +35,6 @@ RUN apt-get install -y --no-install-recommends \
     u-boot-tools \
     mtd-utils \
     android-tools-fsutils \
-    openjdk-8-jdk \
     device-tree-compiler \
     gdisk \
     m4 \
@@ -63,8 +59,8 @@ RUN apt-get install -y --no-install-recommends \
     libssl-dev \
     libxml2-dev \
     libxslt1-dev \
-    libjpeg8-dev \
-    zlib1g-dev
+    zlib1g-dev \
+    kmod
 
 RUN ccache -M 100G
 
